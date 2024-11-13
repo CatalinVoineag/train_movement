@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.3.0"
+ruby "3.3.5"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.4"
@@ -28,9 +28,6 @@ gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", ">= 4.0.1"
-
-# JS library for mapping
-gem 'leaflet-rails'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -64,3 +61,9 @@ group :development do
   # gem "spring"
 end
 
+gem "rack-cors", "~> 2.0"
+gem "stomp"
+gem "csv"
+# JS library for mapping
+gem 'leaflet-rails'
+gem 'geocoder'
