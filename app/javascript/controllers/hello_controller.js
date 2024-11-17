@@ -27,22 +27,24 @@ export default class extends Controller {
     //}).addTo(mapObject);
 
     // map animation?
-    //var times = 100
-    //var markers = []
+    var times = 100
+    var markers = []
+    var coordinates = [ [ -2.2844621, 53.4802635 ], [ -2.2949851, 53.4816129 ], [ -2.2961463, 53.4817676 ], [ -2.2986936, 53.4821069 ], [ -2.3015444, 53.4824732 ], [ -2.3032746, 53.4826923 ], [ -2.3046137, 53.4828642 ], [ -2.3059454, 53.4830218 ], [ -2.3086099, 53.4833331 ], [ -2.3097606, 53.4834633 ], [ -2.3106654, 53.4835656 ], [ -2.3128408, 53.483794 ], [ -2.31464, 53.4839814 ], [ -2.3164028, 53.4841509 ], [ -2.317015, 53.4842053 ], [ -2.3204599, 53.4845091 ], [ -2.3243788, 53.4848695 ], [ -2.3269614, 53.4850913 ], [ -2.3282498, 53.4851916 ], [ -2.330051, 53.4853013 ], [ -2.3311875, 53.4853653 ], [ -2.3327109, 53.4854451 ], [ -2.3339719, 53.4855068 ], [ -2.3341123, 53.485513 ] ]
 
     //const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
     //async function repeatedGreetingsLoop() {
-    //  for (let i = 1; i <= times; i++) {
+    //  for (let i = 0; i <= coordinates.length; i++) {
     //    await sleepNow(1000)
     //    setTimeout(() => {
     //      // Remove old marker
-    //      if (markers.length > 0) {
+    //      if (markers.length > 0 && i < coordinates.length) {
     //        mapObject.removeLayer(markers[0])
     //        markers.shift()
     //      }
 
-    //      markers.push(L.marker([(52.0 + (i * 0.001)), -0.50]).addTo(mapObject))
+    //      console.log(coordinates[i])
+    //      markers.push(L.marker(coordinates[i].reverse()).addTo(mapObject))
     //    }, 50)
     //  }
     //}

@@ -67,3 +67,4 @@ gem "csv"
 # JS library for mapping
 gem 'leaflet-rails'
 gem 'geocoder'
+gem 'rgeo-geojson'
