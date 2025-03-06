@@ -68,3 +68,7 @@ gem "csv"
 gem 'leaflet-rails'
 gem 'geocoder'
 gem 'rgeo-geojson'
+
+gem "karafka", "~> 2.4"
+
+gem "karafka-web", "~> 0.10.3"

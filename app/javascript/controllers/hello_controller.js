@@ -14,17 +14,12 @@ export default class extends Controller {
   connect() {
     this.setupMap()
     this.createSocket()
-
   }
 
   setupMap() {
     mapObject = L.map(this.containerTarget).setView([52.505, -0.50], 7);
     hash = new Map();
 
-
-    //L.tileLayer('https://maptiles.p.rapidapi.com/es/map/v1/{z}/{x}/{y}.png', {
-    //    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    //}).addTo(mapObject);
 
     // map animation?
     var times = 100
@@ -50,9 +45,9 @@ export default class extends Controller {
     //}
 
     //repeatedGreetingsLoop()
+    //
 
-
-    var openrailwaymap = new L.TileLayer('http://{s}.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png',
+    new L.TileLayer('http://{s}.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png',
       {
         attribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors</a>, Style: <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA 2.0</a> <a href="http://www.openrailwaymap.org/">OpenRailwayMap</a> and OpenStreetMap',
         minZoom: 2,
@@ -60,15 +55,13 @@ export default class extends Controller {
         tileSize: 256
       }).addTo(mapObject);
 
-
-
     L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(mapObject);
 
-    //L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    //    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    //}).addTo(mapObject);
+
+
+
 }
 
   createSocket() {
@@ -88,11 +81,16 @@ export default class extends Controller {
           mapObject.removeLayer(oldMarker)
         }
 
-        var marker = L.marker([parseFloat(data.lat), parseFloat(data.long)]).addTo(mapObject)
-        marker.bindPopup(data.train_id)
-        hash.set(data.train_id, marker)
+        var marker = L.marker([parseFloat(data.lat), parseFloat(data.long)],{alt: data.train_id}).addTo(mapObject)
 
-        console.log(hash)
+        marker.on('click', function() {
+          L.popup()
+            .setLatLng(this._latlng)
+            .setContent(`Train ID ${data.train_id}`)
+            .openOn(mapObject);
+        });
+
+        hash.set(data.train_id, marker)
       }
     });
   }

@@ -19,3 +19,8 @@
   padding-top: 100px;
   height: 800px;
 }
+
+
+.leaflet-marker-icon {
+  pointer-events: auto !important;
+}
